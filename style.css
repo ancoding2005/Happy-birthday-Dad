@@ -1,0 +1,1202 @@
+/* ===========================
+   RESET & BASE STYLES
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #f4f1ea;
+  background-image: url("https://www.transparenttextures.com/patterns/old-map.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: #3e3b3b;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Parallax background layer */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.03;
+  z-index: -1;
+  will-change: transform;
+}
+
+/* ===========================
+   INTRO GATE OVERLAY
+   =========================== */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(62, 59, 59, 0.95) 0%,
+    rgba(30, 28, 28, 0.98) 100%
+  );
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.8s ease-out;
+  perspective: 1500px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===========================
+   3D GIFT BOX CONTAINER
+   =========================== */
+.gift-box-container {
+  position: relative;
+  width: 90%;
+  max-width: 550px;
+  transform-style: preserve-3d;
+  animation: slideDown 0.8s ease-out;
+  animation-delay: 0.3s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   GIFT BOX OPENING ANIMATION
+   =========================== */
+.gift-box-container.is-open .gift-body {
+  animation: boxReveal 1.5s ease-out forwards;
+}
+
+@keyframes boxReveal {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* ===========================
+   GIFT BODY (FORM CONTAINER)
+   =========================== */
+.gift-body {
+  position: relative;
+  z-index: 5;
+  transform-style: preserve-3d;
+}
+
+.intro-container {
+  width: 100%;
+}
+
+.secret-card {
+  background: #faf8f3;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.02) 2px,
+    rgba(0, 0, 0, 0.02) 4px
+  );
+  border-radius: 12px;
+  padding: 40px 35px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.3);
+  position: relative;
+  border: 2px solid #d4af37;
+}
+
+.secret-card::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #d4af37;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-subtitle {
+  font-family: "Lato", sans-serif;
+  font-size: 1.1rem;
+  color: #5a5757;
+  font-style: italic;
+}
+
+.intro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3e3b3b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label-icon {
+  font-size: 1.3rem;
+}
+
+.form-input {
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: 2px solid #e8e4db;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #3e3b3b;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.form-input::placeholder {
+  color: #b0a99f;
+  font-style: italic;
+}
+
+.date-input {
+  cursor: pointer;
+}
+
+.date-input:disabled {
+  background: #f0ede5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.form-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #d4af37;
+}
+
+.checkbox-label {
+  font-family: "Lato", sans-serif;
+  font-size: 0.95rem;
+  color: #5a5757;
+  cursor: pointer;
+  user-select: none;
+}
+
+.submit-button {
+  margin-top: 15px;
+  padding: 16px 32px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f4f1ea;
+  background: linear-gradient(135deg, #d4af37 0%, #c19a2e 100%);
+  border: 3px solid #f4f1ea;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.submit-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5),
+    inset 0 2px 5px rgba(255, 255, 255, 0.4);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.button-icon {
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.card-decoration {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.decoration-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
+
+.decoration-icon {
+  font-size: 1.2rem;
+  color: #d4af37;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* Main content hidden initially */
+.main-content {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+  position: relative;
+}
+
+.main-content.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.main-content.revealed {
+  animation: fadeInContent 1.5s ease-out forwards;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===========================
+   FILM GRAIN OVERLAY
+   =========================== */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  animation: grainFlicker 0.2s infinite;
+}
+
+@keyframes grainFlicker {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* ===========================
+   GENTLE RAIN EFFECT
+   =========================== */
+.rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 998;
+  overflow: hidden;
+}
+
+.rain-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      transparent 0%,
+      transparent 85%,
+      rgba(100, 100, 100, 0.3) 85%,
+      transparent 86%
+    ),
+    linear-gradient(
+      transparent 0%,
+      transparent 75%,
+      rgba(90, 90, 90, 0.25) 75%,
+      transparent 76%
+    ),
+    linear-gradient(
+      transparent 0%,
+      transparent 90%,
+      rgba(110, 110, 110, 0.2) 90%,
+      transparent 91%
+    );
+  background-size: 1px 100px, 1px 80px, 1px 120px;
+  background-position: 10% 0, 40% 0, 75% 0;
+  background-repeat: repeat;
+}
+
+/* Layer 1 - Background Rain (Slowest, Most Subtle) */
+.rain-layer.layer-1 {
+  opacity: 0.15;
+  animation: rainFall 1.5s linear infinite;
+  background-size: 1px 150px, 1px 120px, 1px 180px;
+  background-position: 5% 0, 35% 0, 70% 0;
+}
+
+/* Layer 2 - Middle Rain (Medium Speed) */
+.rain-layer.layer-2 {
+  opacity: 0.2;
+  animation: rainFall 1s linear infinite;
+  background-size: 1px 100px, 1px 90px, 1px 130px;
+  background-position: 15% 0, 50% 0, 82% 0;
+  animation-delay: -0.5s;
+}
+
+/* Layer 3 - Foreground Rain (Fastest, Most Visible) */
+.rain-layer.layer-3 {
+  opacity: 0.25;
+  animation: rainFall 0.7s linear infinite;
+  background-size: 1px 80px, 1px 70px, 1px 100px;
+  background-position: 25% 0, 60% 0, 90% 0;
+  animation-delay: -0.3s;
+}
+
+@keyframes rainFall {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 100%;
+  }
+}
+
+/* Enhance rain visibility with subtle blend mode */
+.rain-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(80, 80, 80, 0.02) 0%,
+    transparent 50%,
+    rgba(80, 80, 80, 0.03) 100%
+  );
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* ===========================
+   SVG TIMELINE PATH
+   =========================== */
+.timeline-svg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#timelinePath {
+  stroke-dasharray: 2500;
+  stroke-dashoffset: 2500;
+  transition: stroke-dashoffset 0.3s ease-out;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+}
+
+/* ===========================
+   HEADER SECTION
+   =========================== */
+.hero-header {
+  text-align: center;
+  padding: 80px 20px 60px;
+  background: linear-gradient(135deg, #d4af37 0%, #c19a2e 100%);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInHeader 1.2s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInHeader {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90" opacity="0.05">✨</text></svg>')
+    repeat;
+  background-size: 100px 100px;
+  opacity: 0.3;
+}
+
+.main-title {
+  font-family: "Playfair Display", serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #f4f1ea;
+  text-shadow: 2px 2px 4px rgba(62, 59, 59, 0.3);
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  font-family: "Lato", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #f4f1ea;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================
+   TIMELINE CONTAINER
+   =========================== */
+.timeline-container {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  padding: 40px 0;
+  z-index: 1;
+}
+
+/* Remove old central line - replaced by SVG */
+.timeline::before {
+  display: none;
+}
+
+/* ===========================
+   TIMELINE ITEMS - 3D CINEMATIC
+   =========================== */
+.timeline-item {
+  position: relative;
+  margin-bottom: 120px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  perspective: 2000px;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.timeline-item.left {
+  justify-content: flex-start;
+}
+
+.timeline-item.right {
+  justify-content: flex-end;
+}
+
+/* 3D Flip Animation - Initial Hidden States */
+.timeline-item.left .timeline-content {
+  transform-origin: right center;
+  transform: perspective(1500px) rotateY(-90deg);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.8s ease-out;
+}
+
+.timeline-item.right .timeline-content {
+  transform-origin: left center;
+  transform: perspective(1500px) rotateY(90deg);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.8s ease-out;
+}
+
+/* 3D Flip Animation - Visible States */
+.timeline-item.visible {
+  opacity: 1;
+}
+
+.timeline-item.visible.left .timeline-content {
+  transform: perspective(1500px) rotateY(0deg);
+}
+
+.timeline-item.visible.right .timeline-content {
+  transform: perspective(1500px) rotateY(0deg);
+}
+
+/* ===========================
+   3D TILT EFFECT ON CARDS
+   =========================== */
+.timeline-content {
+  width: 48%;
+  background: #faf8f3;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.015) 2px,
+      rgba(0, 0, 0, 0.015) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.015) 2px,
+      rgba(0, 0, 0, 0.015) 4px
+    );
+  padding: 45px 40px;
+  border-radius: 8px;
+  border: 1px solid #e8e4db;
+  box-shadow: 0 15px 50px rgba(62, 59, 59, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Stacked photo effect - Bottom layer */
+.timeline-content::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -8px;
+  right: 8px;
+  bottom: -10px;
+  background: #f0ede5;
+  border: 1px solid #d4c9b3;
+  border-radius: 6px;
+  transform: translateZ(-30px) rotate(-2deg);
+  z-index: -1;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Stacked photo effect - Middle layer */
+.timeline-content::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -4px;
+  right: 4px;
+  bottom: -5px;
+  background: #f5f2ea;
+  border: 1px solid #ddd4c3;
+  border-radius: 7px;
+  transform: translateZ(-15px) rotate(1deg);
+  z-index: -1;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Dynamic 3D tilt on hover - Applied via JavaScript */
+.timeline-content[data-tilt-active="true"] {
+  box-shadow: 0 25px 70px rgba(62, 59, 59, 0.3), 0 10px 25px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ===========================
+   YEAR WATERMARK
+   =========================== */
+.year-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Playfair Display", serif;
+  font-size: 12rem;
+  font-weight: 900;
+  color: #d4af37;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  user-select: none;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Timeline connector dot */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #d4af37, #c19a2e);
+  border: 5px solid #f4f1ea;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.2), 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Connector line from dot to content - Removed for cleaner SVG look */
+.timeline-item.left .timeline-content::after,
+.timeline-item.right .timeline-content::after {
+  display: none;
+}
+
+/* ===========================
+   TIMELINE CONTENT ELEMENTS
+   =========================== */
+.timeline-date {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #8b7355;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(212, 175, 55, 0.2);
+  position: relative;
+  padding-bottom: 15px;
+}
+
+/* Decorative underline for date */
+.timeline-date::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
+
+.timeline-image-container {
+  width: 100%;
+  margin-bottom: 25px;
+  padding: 0;
+  background: transparent;
+  position: relative;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.timeline-item.right .timeline-image-container {
+  transform: rotate(1deg);
+}
+
+.timeline-image-container:hover {
+  transform: rotate(0deg);
+}
+
+/* Masking tape effect - top piece */
+.timeline-image-container::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 120px;
+  height: 30px;
+  background: rgba(255, 250, 230, 0.85);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  border: 1px solid rgba(210, 200, 170, 0.4);
+  border-left: 1px solid rgba(210, 200, 170, 0.2);
+  border-right: 1px solid rgba(180, 170, 140, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Masking tape effect - bottom piece */
+.timeline-image-container::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1.5deg);
+  width: 100px;
+  height: 28px;
+  background: rgba(255, 250, 230, 0.82);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  border: 1px solid rgba(210, 200, 170, 0.4);
+  border-left: 1px solid rgba(210, 200, 170, 0.2);
+  border-right: 1px solid rgba(180, 170, 140, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.timeline-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 12px solid #ffffff;
+  border-bottom: 16px solid #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), inset 0 0 30px rgba(0, 0, 0, 0.03);
+  filter: sepia(25%) contrast(0.92) brightness(1.08) saturate(0.85);
+  transition: filter 0.4s ease, transform 0.3s ease;
+}
+
+.timeline-image:hover {
+  filter: sepia(15%) contrast(0.98) brightness(1.12) saturate(0.95);
+  transform: scale(1.01);
+}
+
+.timeline-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d2a2a;
+  margin-bottom: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(212, 175, 55, 0.1);
+  font-style: italic;
+}
+
+.timeline-description {
+  font-family: "Lato", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #4a4545;
+  text-align: justify;
+  text-indent: 30px;
+  letter-spacing: 0.3px;
+  font-weight: 400;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: #e8e4db;
+  color: #3e3b3b;
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  border-top: 2px solid #d4af37;
+}
+
+/* ===========================
+   MUSIC PLAYER BUTTON
+   =========================== */
+.music-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #d4af37 0%, #c19a2e 100%);
+  border: 3px solid #f4f1ea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #f4f1ea;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(62, 59, 59, 0.3),
+    inset 0 2px 5px rgba(255, 255, 255, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  user-select: none;
+  animation: pulse 2s infinite;
+}
+
+.music-button:hover {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5),
+    inset 0 2px 5px rgba(255, 255, 255, 0.4);
+}
+
+.music-button:active {
+  transform: scale(0.95);
+}
+
+.music-button.playing {
+  animation: rotate 3s linear infinite, pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 15px rgba(62, 59, 59, 0.3),
+      inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 0 0 0 rgba(212, 175, 55, 0.7);
+  }
+  50% {
+    box-shadow: 0 4px 15px rgba(62, 59, 59, 0.3),
+      inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 0 0 15px rgba(212, 175, 55, 0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+@media screen and (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  /* Remove the central line on mobile */
+  .timeline::before {
+    left: 30px;
+  }
+
+  /* Stack timeline items vertically */
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    justify-content: flex-end;
+    perspective: none;
+  }
+
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content,
+  .timeline-item.visible.left .timeline-content,
+  .timeline-item.visible.right .timeline-content {
+    transform: rotate(0deg) !important;
+    transform-origin: center center !important;
+  }
+
+  .timeline-content {
+    width: calc(100% - 80px);
+    margin-left: 80px;
+  }
+
+  .timeline-image-container {
+    transform: rotate(0deg) !important;
+  }
+
+  /* Adjust dot position */
+  .timeline-item::before {
+    left: 30px;
+    transform: translateX(-50%);
+  }
+
+  /* Adjust connector lines */
+  .timeline-item.left .timeline-content::after,
+  .timeline-item.right .timeline-content::after {
+    left: -40px;
+    right: auto;
+  }
+
+  .timeline-date {
+    font-size: 2rem;
+  }
+
+  .timeline-title {
+    font-size: 1.5rem;
+  }
+
+  /* Intro overlay responsive */
+  .gift-box-container {
+    width: 95%;
+  }
+
+  .intro-container {
+    width: 95%;
+  }
+
+  .secret-card {
+    padding: 30px 25px;
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+  }
+
+  .card-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Cinematic elements responsive */
+  .year-watermark {
+    font-size: 8rem;
+    opacity: 0.08;
+  }
+
+  .timeline-item {
+    margin-bottom: 100px;
+  }
+
+  .timeline-svg {
+    width: 80px;
+  }
+
+  /* Rain effect responsive */
+  .rain-layer.layer-1 {
+    opacity: 0.12;
+  }
+
+  .rain-layer.layer-2 {
+    opacity: 0.15;
+  }
+
+  .rain-layer.layer-3 {
+    opacity: 0.18;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-header {
+    padding: 60px 15px 40px;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .timeline-container {
+    margin: 40px auto;
+  }
+
+  .timeline-content {
+    padding: 25px 20px;
+    width: calc(100% - 60px);
+    margin-left: 60px;
+  }
+
+  .timeline-description {
+    text-indent: 20px;
+  }
+
+  .timeline-date {
+    font-size: 1.5rem;
+  }
+
+  .timeline-title {
+    font-size: 1.3rem;
+  }
+
+  .timeline-description {
+    font-size: 0.95rem;
+  }
+
+  /* Cinematic elements small mobile */
+  .year-watermark {
+    font-size: 6rem;
+    opacity: 0.06;
+  }
+
+  .timeline-item {
+    margin-bottom: 80px;
+  }
+
+  .timeline-svg {
+    width: 60px;
+  }
+
+  .film-grain {
+    opacity: 0.25;
+  }
+
+  /* Rain effect small mobile - reduce for performance */
+  .rain-layer.layer-1 {
+    opacity: 0.1;
+    animation-duration: 2s;
+  }
+
+  .rain-layer.layer-2 {
+    opacity: 0.12;
+    animation-duration: 1.3s;
+  }
+
+  .rain-layer.layer-3 {
+    opacity: 0.15;
+    animation-duration: 0.9s;
+  }
+
+  /* Intro overlay small mobile */
+  .secret-card {
+    padding: 25px 20px;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .card-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .form-label {
+    font-size: 1rem;
+  }
+
+  .form-input {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+
+  .submit-button {
+    padding: 14px 24px;
+    font-size: 1.1rem;
+  }
+}

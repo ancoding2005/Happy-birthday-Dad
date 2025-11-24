@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dad's Journey - A Vintage Timeline</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Gentle Rain Effect Overlay -->
+    <div class="rain-container">
+      <div class="rain-layer layer-1"></div>
+      <div class="rain-layer layer-2"></div>
+      <div class="rain-layer layer-3"></div>
+    </div>
+
+    <!-- Intro Gate Overlay -->
+    <div id="intro-overlay" class="intro-overlay">
+      <div class="gift-box-container" id="giftBoxContainer">
+        <!-- Gift Body (Contains the Form) -->
+        <div class="gift-body">
+          <div class="intro-container">
+            <div class="secret-card">
+              <div class="card-header">
+                <h2 class="card-title">Nhiệm Vụ Bí Mật</h2>
+                <p class="card-subtitle">Trả lời các câu hỏi để mở quà</p>
+              </div>
+
+              <form id="introForm" class="intro-form">
+                <div class="form-group">
+                  <label for="favFood" class="form-label">
+                    <span class="label-icon">🍴</span>
+                    Món ăn bố thích nhất?
+                  </label>
+                  <input
+                    type="text"
+                    id="favFood"
+                    name="favFood"
+                    class="form-input"
+                    placeholder="Nhập món ăn yêu thích..."
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="hateFood" class="form-label">
+                    <span class="label-icon">❌</span>
+                    Món ăn bố ghét nhất?
+                  </label>
+                  <input
+                    type="text"
+                    id="hateFood"
+                    name="hateFood"
+                    class="form-input"
+                    placeholder="Nhập món ăn không thích..."
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="anniversary" class="form-label">
+                    <span class="label-icon">💍</span>
+                    Ngày kỷ niệm ngày cưới?
+                  </label>
+                  <input
+                    type="date"
+                    id="anniversary"
+                    name="anniversary"
+                    class="form-input date-input"
+                  />
+
+                  <div class="checkbox-wrapper">
+                    <input
+                      type="checkbox"
+                      id="dontRemember"
+                      name="dontRemember"
+                      class="form-checkbox"
+                    />
+                    <label for="dontRemember" class="checkbox-label">
+                      🤔 Bố không nhớ
+                    </label>
+                  </div>
+                </div>
+
+                <button type="submit" class="submit-button">Mở Quà</button>
+              </form>
+
+              <div class="card-decoration">
+                <div class="decoration-line"></div>
+                <span class="decoration-icon">✨</span>
+                <div class="decoration-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-content" class="main-content hidden">
+      <!-- Film Grain Overlay -->
+      <div class="film-grain"></div>
+
+      <header class="hero-header">
+        <h1 class="main-title">Dad's Journey</h1>
+        <p class="subtitle">The story of a hero</p>
+      </header>
+
+      <main class="timeline-container">
+        <!-- SVG Journey Line -->
+        <svg class="timeline-svg" id="timelineSvg">
+          <path
+            id="timelinePath"
+            d="M 50 0 Q 45 150, 50 300 T 50 600 Q 55 750, 50 900 T 50 1200 Q 45 1350, 50 1500 T 50 1800 Q 55 1950, 50 2100"
+            fill="none"
+            stroke="url(#lineGradient)"
+            stroke-width="4"
+          />
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color: #d4af37; stop-opacity: 1" />
+              <stop offset="50%" style="stop-color: #c19a2e; stop-opacity: 1" />
+              <stop
+                offset="100%"
+                style="stop-color: #d4af37; stop-opacity: 1"
+              />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <div class="timeline">
+          <!-- Timeline Item 1 -->
+          <article class="timeline-item left" data-tilt>
+            <div class="timeline-content">
+              <div class="year-watermark">2017</div>
+              <div class="timeline-date">2017</div>
+              <div class="timeline-image-container">
+                <img
+                  src="1.jpg"
+                  alt="Childhood memories"
+                  class="timeline-image"
+                />
+              </div>
+              <h3 class="timeline-title">Hồi xưa</h3>
+              <p class="timeline-description">Gia đình mình khi xưa nè bố :></p>
+            </div>
+          </article>
+
+          <!-- Timeline Item 2 -->
+          <article class="timeline-item right" data-tilt>
+            <div class="timeline-content">
+              <div class="year-watermark">2021</div>
+              <div class="timeline-date">2021</div>
+              <div class="timeline-image-container">
+                <img
+                  src="2.jpg"
+                  alt="Career beginning"
+                  class="timeline-image"
+                />
+              </div>
+              <h3 class="timeline-title">Du lịch</h3>
+              <p class="timeline-description">
+                Tròi oi, bố mẹ tình cảm dễ thương quá :3!
+              </p>
+            </div>
+          </article>
+
+          <!-- Timeline Item 3 -->
+          <article class="timeline-item left" data-tilt>
+            <div class="timeline-content">
+              <div class="year-watermark">2021</div>
+              <div class="timeline-date">2021</div>
+              <div class="timeline-image-container">
+                <img src="3.jpg" alt="Wedding day" class="timeline-image" />
+              </div>
+              <h3 class="timeline-title">Du lịch</h3>
+              <p class="timeline-description">
+                Ông bố chủ tịch ngầu đét giả vờ shiper cùng phu nhân đang đi
+                tuần trăng mật ở SaPa (⁠ ⁠◜⁠‿⁠◝⁠ ⁠)⁠♡
+              </p>
+            </div>
+          </article>
+
+          <!-- Timeline Item 4 -->
+          <article class="timeline-item right" data-tilt>
+            <div class="timeline-content">
+              <div class="year-watermark">2021</div>
+              <div class="timeline-date">2021</div>
+              <div class="timeline-image-container">
+                <img src="4.jpg" alt="My birth" class="timeline-image" />
+              </div>
+              <h3 class="timeline-title">Cầu may</h3>
+              <p class="timeline-description">
+                Đi lê cầu phúc. Chúc bố luôn mạnh khoẻ, vui vẻ, trẻ trung không
+                lo muộn phiền nha (⁠≧⁠▽⁠≦⁠)
+              </p>
+            </div>
+          </article>
+
+          <!-- Timeline Item 5 -->
+          <article class="timeline-item left" data-tilt>
+            <div class="timeline-content">
+              <div class="year-watermark">2021</div>
+              <div class="timeline-date">2021</div>
+              <div class="timeline-image-container">
+                <img
+                  src="5.jpg"
+                  alt="Birthday celebration"
+                  class="timeline-image"
+                />
+              </div>
+              <h3 class="timeline-title">Kí ức</h3>
+              <p class="timeline-description">(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)⁠❤</p>
+            </div>
+          </article>
+
+          <!-- Timeline Item 6 -->
+          <article class="timeline-item right" data-tilt>
+            <div class="timeline-content">
+              <div class="year-watermark">2025</div>
+              <div class="timeline-date">2025</div>
+              <div class="timeline-image-container">
+                <img
+                  src="6.png"
+                  alt="Birthday celebration"
+                  class="timeline-image"
+                />
+              </div>
+              <h3 class="timeline-title">Happy birthday</h3>
+              <p class="timeline-description">
+                Chúc bố yêu sinh nhật vui vẻ nhé (⁠๑⁠¯⁠◡⁠¯⁠๑⁠)
+              </p>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p>Made with ❤️ for the best dad in the world</p>
+      </footer>
+    </div>
+
+    <!-- Hidden Audio Player -->
+    <audio id="backgroundMusic" loop>
+      <source src="music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Floating Music Button -->
+    <button class="music-button" id="musicToggle" aria-label="Toggle music">
+      🎵
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
